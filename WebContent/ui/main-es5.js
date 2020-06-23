@@ -91,7 +91,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<h1>\n\tJEE-102: My Books\n\t<button (click)=\"showAdd()\">Add Book</button>\n</h1>\n<div *ngIf=book>\n\t<fieldset style='width: 100%'>\n\t\t<legend>Book Details ({{book.id}}):</legend>\n\t\t<form>\n\t\t\t<label>Title: </label>\n\t\t\t<input name=\"title\" [(ngModel)]=\"book.title\">\n\t\t\t<br />\n\t\t\t<label>Author: </label>\n\t\t\t<input name=\"author\" [(ngModel)]=\"book.author\">\n\t\t\t<br />\n\t\t\t<label>Year: </label>\n\t\t\t<input name=\"year\" [(ngModel)]=\"book.year\">\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertBook()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n\n<div *ngIf=books>\n    <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>Year</th>\n            <th>Author</th>\n            <th>Title</th>\n       </tr>\n\t\t<tr *ngFor='let b of books;'>\n            <td align=center>\n\t\t\t\t<button (click)=\"showEdit(b.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{b.id}}</td>\n            <td>{{b.year}}</td>\n\t\t\t<td>{{b.author}}</td>\n\t\t\t<td>{{b.title}}</td>\n             <td align=center>\n\t\t\t\t<button (click)=\"deleteBook(b.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</div>\n";
+    __webpack_exports__["default"] = "<h1>\n\tJEE-102: My Books\n</h1>\n<div *ngIf=book>\n\t<fieldset style='width: 100%'>\n\t\t<legend>Book Details ({{book.id}}):</legend>\n\t\t<form>\n\t\t\t<label>Title: </label>\n\t\t\t<input name=\"title\" [(ngModel)]=\"book.title\">\n\t\t\t<br />\n\t\t\t<label>Author: </label>\n\t\t\t<input name=\"author\" [(ngModel)]=\"book.author\">\n\t\t\t<br />\n\t\t\t<label>Year: </label>\n\t\t\t<input name=\"year\" [(ngModel)]=\"book.year\">\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertBook()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n\n<fieldset *ngIf=books>\n\t<legend>Books: <button (click)=\"showAddBook()\">Add Book</button> </legend>\n    <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>Year</th>\n            <th>Author</th>\n            <th>Title</th>\n       </tr>\n\t\t<tr *ngFor='let b of books;'>\n            <td align=center>\n\t\t\t\t<button (click)=\"showEditBook(b.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{b.id}}</td>\n            <td>{{b.year}}</td>\n\t\t\t<td>{{b.author}}</td>\n\t\t\t<td>{{b.title}}</td>\n             <td align=center>\n\t\t\t\t<button (click)=\"deleteBook(b.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</fieldset>\n";
     /***/
   },
 
@@ -111,27 +111,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<h1>\n\tJEE-103: My Books\n\t<button (click)=\"showAdd()\">Add Book</button>\n</h1>\n<div *ngIf=book>\n\t<fieldset style='width: 100%'>\n\t\t<legend>Book Details ({{book.id}}):</legend>\n\t\t<form>\n\t\t\t<label>Title: </label>\n\t\t\t<input name=\"title\" [(ngModel)]=\"book.title\">\n\t\t\t<br />\n\t\t\t<label>Author: </label>\n\t\t\t<input name=\"author\" [(ngModel)]=\"book.author\">\n\t\t\t<br />\n\t\t\t<label>Year: </label>\n\t\t\t<input name=\"year\" [(ngModel)]=\"book.year\">\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertBook()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n\n<div *ngIf=books>\n    <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>Year</th>\n            <th>Author</th>\n            <th>Title</th>\n       </tr>\n\t\t<tr *ngFor='let b of books;'>\n            <td align=center>\n\t\t\t\t<button (click)=\"showEdit(b.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{b.id}}</td>\n            <td>{{b.year}}</td>\n\t\t\t<td>{{b.author}}</td>\n\t\t\t<td>{{b.title}}</td>\n             <td align=center>\n\t\t\t\t<button (click)=\"deleteBook(b.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</div>\n";
+    __webpack_exports__["default"] = "{{ currentUser ? 'Welcome ' + currentUser.username : ''}} \n<button routerLink=\"/login/\">{{ isLoggedIn() ? 'Logout' : 'Login' }}</button>\n\n<h1>\n\tJEE-103: My Books \n</h1>\n\n<div *ngIf=book>\n\t<fieldset style='width: 100%'>\n\t\t<legend>Book Details ({{book.id}}):</legend>\n\t\t<form>\n\t\t\t<label>Title: </label>\n\t\t\t<input name=\"title\" [(ngModel)]=\"book.title\">\n\t\t\t<br />\n\t\t\t<label>Author: </label>\n\t\t\t<input name=\"author\" [(ngModel)]=\"book.author\">\n\t\t\t<br />\n\t\t\t<label>Year: </label>\n\t\t\t<input name=\"year\" [(ngModel)]=\"book.year\">\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertBook()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n\n<fieldset>\n\t<legend>Books: <button  *ngIf=\"isLoggedIn()\" (click)=\"showAddBook()\">Add Book</button></legend>\n \t{{ isLoggedIn() ? '' : 'Must Login to Add/Edit Books' }}\n   <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>Year</th>\n            <th>Author</th>\n            <th>Title</th>\n       </tr>\n\t\t<tr *ngFor='let b of books;'>\n            <td align=center>\n\t\t\t\t<button *ngIf=\"isLoggedIn()\" (click)=\"showEditBook(b.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{b.id}}</td>\n            <td>{{b.year}}</td>\n\t\t\t<td>{{b.author}}</td>\n\t\t\t<td>{{b.title}}</td>\n             <td align=center>\n\t\t\t\t<button *ngIf=\"isLoggedIn()\" (click)=\"deleteBook(b.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</fieldset>\n\n\n\n<div *ngIf=user>\n\t<fieldset style='width: 100%'>\n\t\t<legend>User Details ({{user.id}}):</legend>\n\t\t<form>\n\t\t\t<label>UserID: </label>\n\t\t\t<input name=\"username\" [(ngModel)]=\"user.username\">\n\t\t\t<br />\n\t\t\t<label>Password: </label>\n\t\t\t<input name=\"password\" [(ngModel)]=\"user.password\">\n\t\t\t<br />\n\t\t\t<label>Role: </label>\n\t\t\t\t<select name=\"role\" [(ngModel)]=\"user.role\">\n\t\t\t\t\t<option *ngFor=\"let r of getUserRoleKeys()\" [value]='r' selected>{{userRoleNames.get(r)}}</option>\n\t\t\t\t\t<!-- <option [value]='USER_ROLE.PUBLIC' selected>PUBLIC</option> -->\n\t\t\t\t\t<!-- <option [value]='USER_ROLE.ADMIN'>ADMIN</option> -->\n\t\t\t\t</select>\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertUser()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n<fieldset *ngIf=isAdmin>\n\t<legend>Users: \t\n\t<button *ngIf=\"isLoggedIn()\" (click)=\"showAddUser()\">Add User</button></legend>\n\t{{ isLoggedIn() ? '' : 'Must Login to View Users' }}\n    <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>UserId</th>\n            <th>Role</th>\n       </tr>\n\t\t<tr *ngFor='let u of users;'>\n            <td align=center>\n\t\t\t\t<button *ngIf=(loggedIn) (click)=\"showEditUser(u.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{u.id}}</td>\n            <td>{{u.username}}</td>\n\t\t\t<td>{{u.role}}</td>\n             <td align=center>\n\t\t\t\t<button *ngIf=(loggedIn) (click)=\"deleteUser(u.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</fieldset>\n\n\n";
     /***/
   },
 
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-login/user-login.component.html":
-  /*!*******************************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-login/user-login.component.html ***!
-    \*******************************************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html":
+  /*!*********************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html ***!
+    \*********************************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppComponentsUserLoginUserLoginComponentHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsLoginLoginComponentHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<p>user-login works!</p>\n";
+    __webpack_exports__["default"] = "\t<fieldset style='width: 100%'>\n\t\t<legend>Login Form</legend>\n\t\t<form>\n\t\t\t<label>UserID: </label>\n\t\t\t<input name=\"username\" type=text [(ngModel)]=\"user.username\">\n\t\t\t<br />\n\t\t\t<label>Password: </label>\n\t\t\t<input name=\"password\" type=password [(ngModel)]=\"user.password\">\n\t\t\t<button (click)=\"login()\">Login</button>\n\n\t\t</form>\n    </fieldset> \n";
     /***/
   },
 
@@ -879,46 +879,46 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-    /*! ./components/user-login/user-login.component */
-    "./src/app/components/user-login/user-login.component.ts");
-    /* harmony import */
-
-
-    var _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ./components/jee101/jee101.component */
     "./src/app/components/jee101/jee101.component.ts");
     /* harmony import */
 
 
-    var _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ./components/jee102/jee102.component */
     "./src/app/components/jee102/jee102.component.ts");
     /* harmony import */
 
 
-    var _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ./components/jee103/jee103.component */
     "./src/app/components/jee103/jee103.component.ts");
     /* harmony import */
 
 
-    var _services_api_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _services_api_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ./services/api.service */
     "./src/app/services/api.service.ts");
+    /* harmony import */
+
+
+    var _components_login_login_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ./components/login/login.component */
+    "./src/app/components/login/login.component.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_8__["UserLoginComponent"], _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_9__["Jee101Component"], _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_10__["Jee102Component"], _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_11__["Jee103Component"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_8__["Jee101Component"], _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_9__["Jee102Component"], _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_10__["Jee103Component"], _components_login_login_component__WEBPACK_IMPORTED_MODULE_12__["LoginComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(_app_routes__WEBPACK_IMPORTED_MODULE_4__["ROUTES"], {
         useHash: true,
         preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_5__["PreloadAllModules"],
         onSameUrlNavigation: 'reload'
       }), _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"]],
-      providers: [_services_api_service__WEBPACK_IMPORTED_MODULE_12__["ApiService"]],
+      providers: [_services_api_service__WEBPACK_IMPORTED_MODULE_11__["ApiService"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })], AppModule);
     /***/
@@ -952,9 +952,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./components/user-login/user-login.component */
-    "./src/app/components/user-login/user-login.component.ts");
+    var _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./components/login/login.component */
+    "./src/app/components/login/login.component.ts");
     /* harmony import */
 
 
@@ -976,10 +976,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var ROUTES = [{
       path: 'login',
-      component: _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_1__["UserLoginComponent"]
+      component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__["LoginComponent"]
     }, {
       path: '',
-      component: _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_1__["UserLoginComponent"]
+      component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__["LoginComponent"]
     }, {
       path: 'jee101',
       component: _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_2__["Jee101Component"]
@@ -991,7 +991,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       component: _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_4__["Jee103Component"]
     }, {
       path: '**',
-      component: _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_1__["UserLoginComponent"]
+      component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__["LoginComponent"]
     }];
     /***/
   },
@@ -1058,7 +1058,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var src_app_services_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! src/app/services/api.service */
-    "./src/app/services/api.service.ts");
+    "./src/app/services/api.service.ts"); // import { CombineLatestOperator } from 'rxjs/internal/observable/combineLatest';
+
 
     var Jee101Component = /*#__PURE__*/function () {
       // tslint:disable-next-line:variable-name
@@ -1197,13 +1198,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
-        key: "showAdd",
-        value: function showAdd() {
+        key: "showAddBook",
+        value: function showAddBook() {
           this.book = new src_app_model_book__WEBPACK_IMPORTED_MODULE_3__["Book"]();
         }
       }, {
-        key: "showEdit",
-        value: function showEdit(id) {
+        key: "showEditBook",
+        value: function showEditBook(id) {
           var _this3 = this;
 
           console.log('Showing edit bookID: ' + id);
@@ -1333,75 +1334,168 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var src_app_model_book__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! src/app/model/book */
     "./src/app/model/book.ts");
+    /* harmony import */
+
+
+    var src_app_model_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/model/user */
+    "./src/app/model/user.ts");
 
     var Jee103Component = /*#__PURE__*/function () {
       function Jee103Component(apiService) {
         _classCallCheck(this, Jee103Component);
 
         this.apiService = apiService;
+        this.USER_ROLE = src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["USER_ROLE"];
+        this.userRoleNames = src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["User"].getUserRoleNames();
+        this.loggedIn = false;
+        this.isAdmin = true;
+        this.showLogin = false;
         this.books = this.getBooks();
+        this.users = this.getUsers();
+        this.currentUser = apiService.getCurrentUser();
       }
 
       _createClass(Jee103Component, [{
+        key: "isLoggedIn",
+        value: function isLoggedIn() {
+          return this.apiService.getCurrentUser() != null;
+        }
+      }, {
+        key: "getUserRoleKeys",
+        value: function getUserRoleKeys() {
+          return Array.from(this.userRoleNames.keys());
+        }
+      }, {
         key: "getBooks",
         value: function getBooks() {
           var _this6 = this;
 
-          this.apiService.readBooks102().subscribe(function (success) {
-            _this6.books = success;
-            console.log('Got Books: ' + _this6.books);
+          this.apiService.readBooks103().subscribe(function (success) {
+            _this6.books = success.body;
+
+            _this6.apiService.updateJwt(success.headers);
           }, function (error) {
             return _this6.apiService.handleError(error);
           });
         }
       }, {
-        key: "showAdd",
-        value: function showAdd() {
-          this.book = new src_app_model_book__WEBPACK_IMPORTED_MODULE_3__["Book"]();
-        }
-      }, {
-        key: "showEdit",
-        value: function showEdit(id) {
+        key: "getUsers",
+        value: function getUsers() {
           var _this7 = this;
 
-          console.log('Showing edit bookID: ' + id);
-          this.apiService.readBook102(id).subscribe(function (success) {
-            _this7.book = success;
+          this.apiService.readUsers103().subscribe(function (success) {
+            _this7.users = success.body;
+
+            _this7.apiService.updateJwt(success.headers);
           }, function (error) {
             return _this7.apiService.handleError(error);
           });
         }
       }, {
-        key: "upsertBook",
-        value: function upsertBook() {
+        key: "showAddBook",
+        value: function showAddBook() {
+          this.book = new src_app_model_book__WEBPACK_IMPORTED_MODULE_3__["Book"]();
+        }
+      }, {
+        key: "showEditBook",
+        value: function showEditBook(id) {
           var _this8 = this;
 
-          var apiServieRequest;
+          console.log('Showing edit bookID: ' + id);
+          this.apiService.readBook103(id).subscribe(function (success) {
+            _this8.book = success.body;
 
-          if (this.book.id) {
-            apiServieRequest = this.apiService.updateBook102(this.book);
-          } else {
-            apiServieRequest = this.apiService.createBook102(this.book);
-          }
-
-          apiServieRequest.subscribe(function (success) {
-            _this8.getBooks();
-
-            _this8.book = null;
+            _this8.apiService.updateJwt(success.headers);
           }, function (error) {
             return _this8.apiService.handleError(error);
           });
         }
       }, {
-        key: "deleteBook",
-        value: function deleteBook(id) {
+        key: "showAddUser",
+        value: function showAddUser() {
+          this.user = new src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
+          this.user.role = src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["USER_ROLE"].PUBLIC; // Set default option
+        }
+      }, {
+        key: "showEditUser",
+        value: function showEditUser(id) {
           var _this9 = this;
 
+          console.log('Showing edit bookID: ' + id);
+          this.apiService.readUser103(id).subscribe(function (success) {
+            _this9.user = success.body;
+
+            _this9.apiService.updateJwt(success.headers);
+          }, function (error) {
+            return _this9.apiService.handleError(error);
+          });
+        }
+      }, {
+        key: "upsertBook",
+        value: function upsertBook() {
+          var _this10 = this;
+
+          var apiServiceRequest;
+
+          if (this.book.id) {
+            apiServiceRequest = this.apiService.updateBook103(this.book);
+          } else {
+            apiServiceRequest = this.apiService.createBook103(this.book);
+          }
+
+          apiServiceRequest.subscribe(function (success) {
+            _this10.getBooks();
+
+            _this10.book = null;
+          }, function (error) {
+            return _this10.apiService.handleError(error);
+          });
+        }
+      }, {
+        key: "deleteBook",
+        value: function deleteBook(id) {
+          var _this11 = this;
+
           if (confirm('Are you sure you want to delete the book?')) {
-            this.apiService.deleteBook102(id).subscribe(function (success) {
-              _this9.getBooks();
+            this.apiService.deleteBook103(id).subscribe(function (success) {
+              _this11.getBooks();
             }, function (error) {
-              return _this9.apiService.handleError(error);
+              return _this11.apiService.handleError(error);
+            });
+          }
+        }
+      }, {
+        key: "upsertUser",
+        value: function upsertUser() {
+          var _this12 = this;
+
+          var apiServiceRequest;
+
+          if (this.user.id) {
+            apiServiceRequest = this.apiService.updateUser103(this.user);
+          } else {
+            apiServiceRequest = this.apiService.createUser103(this.user);
+          }
+
+          apiServiceRequest.subscribe(function (success) {
+            _this12.getUsers();
+
+            _this12.user = null;
+          }, function (error) {
+            return _this12.apiService.handleError(error);
+          });
+        }
+      }, {
+        key: "deleteUser",
+        value: function deleteUser(id) {
+          var _this13 = this;
+
+          if (confirm('Are you sure you want to delete the user?')) {
+            this.apiService.deleteUser103(id).subscribe(function (success) {
+              _this13.getUsers();
+            }, function (error) {
+              return _this13.apiService.handleError(error);
             });
           }
         }
@@ -1429,43 +1523,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/components/user-login/user-login.component.css":
-  /*!****************************************************************!*\
-    !*** ./src/app/components/user-login/user-login.component.css ***!
-    \****************************************************************/
+  "./src/app/components/login/login.component.css":
+  /*!******************************************************!*\
+    !*** ./src/app/components/login/login.component.css ***!
+    \******************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function srcAppComponentsUserLoginUserLoginComponentCss(module, __webpack_exports__, __webpack_require__) {
+  function srcAppComponentsLoginLoginComponentCss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdXNlci1sb2dpbi91c2VyLWxvZ2luLmNvbXBvbmVudC5jc3MifQ== */";
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJ9 */";
     /***/
   },
 
   /***/
-  "./src/app/components/user-login/user-login.component.ts":
-  /*!***************************************************************!*\
-    !*** ./src/app/components/user-login/user-login.component.ts ***!
-    \***************************************************************/
+  "./src/app/components/login/login.component.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/components/login/login.component.ts ***!
+    \*****************************************************/
 
-  /*! exports provided: UserLoginComponent */
+  /*! exports provided: LoginComponent */
 
   /***/
-  function srcAppComponentsUserLoginUserLoginComponentTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppComponentsLoginLoginComponentTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "UserLoginComponent", function () {
-      return UserLoginComponent;
+    __webpack_require__.d(__webpack_exports__, "LoginComponent", function () {
+      return LoginComponent;
     });
     /* harmony import */
 
@@ -1479,29 +1573,74 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
 
-    var UserLoginComponent = /*#__PURE__*/function () {
-      function UserLoginComponent() {
-        _classCallCheck(this, UserLoginComponent);
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _services_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../services/api.service */
+    "./src/app/services/api.service.ts");
+    /* harmony import */
+
+
+    var src_app_model_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/model/user */
+    "./src/app/model/user.ts");
+
+    var LoginComponent = /*#__PURE__*/function () {
+      function LoginComponent(apiService, router) {
+        _classCallCheck(this, LoginComponent);
+
+        this.apiService = apiService;
+        this.router = router;
+        this.apiService.terminateSession(); // The /login/ route automatically logs out the current User
+
+        this.user = new src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
       }
 
-      _createClass(UserLoginComponent, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {}
+      _createClass(LoginComponent, [{
+        key: "login",
+        value: function login() {
+          var _this14 = this;
+
+          this.apiService.loginUser(this.user).subscribe(function (success) {
+            // this.user = success.body;
+            _this14.apiService.setCurrentUser(success.body);
+
+            _this14.apiService.updateJwt(success.headers);
+
+            _this14.router.navigate(['/jee103/']);
+          }, function (error) {
+            return _this14.apiService.handleError(error);
+          });
+        }
       }]);
 
-      return UserLoginComponent;
+      return LoginComponent;
     }();
 
-    UserLoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-user-login',
+    LoginComponent.ctorParameters = function () {
+      return [{
+        type: _services_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
+    };
+
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-login',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./user-login.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-login/user-login.component.html"))["default"],
+      /*! raw-loader!./login.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html"))["default"],
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./user-login.component.css */
-      "./src/app/components/user-login/user-login.component.css"))["default"]]
-    })], UserLoginComponent);
+      /*! ./login.component.css */
+      "./src/app/components/login/login.component.css"))["default"]]
+    })], LoginComponent);
     /***/
   },
 
@@ -1534,6 +1673,66 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var Book = function Book() {
       _classCallCheck(this, Book);
     };
+    /***/
+
+  },
+
+  /***/
+  "./src/app/model/user.ts":
+  /*!*******************************!*\
+    !*** ./src/app/model/user.ts ***!
+    \*******************************/
+
+  /*! exports provided: USER_ROLE, User */
+
+  /***/
+  function srcAppModelUserTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "USER_ROLE", function () {
+      return USER_ROLE;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "User", function () {
+      return User;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var USER_ROLE;
+
+    (function (USER_ROLE) {
+      USER_ROLE["ADMIN"] = "ADMIN";
+      USER_ROLE["PUBLIC"] = "PUBLIC";
+    })(USER_ROLE || (USER_ROLE = {}));
+
+    var UserRoleNames = new Map([// These are the option display names
+    [USER_ROLE.ADMIN, 'Admin'], [USER_ROLE.PUBLIC, 'Public']]);
+
+    var User = /*#__PURE__*/function () {
+      function User() {
+        _classCallCheck(this, User);
+      }
+
+      _createClass(User, null, [{
+        key: "getUserRoleNames",
+        value: function getUserRoleNames() {
+          return UserRoleNames;
+        }
+      }]);
+
+      return User;
+    }();
     /***/
 
   },
@@ -1597,12 +1796,52 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.router = router;
         this.http = http;
+        this.JWT_ACCESS_HEADER = 'Jwt-Access';
+        this.TIMEOUT_HEADER = 'Timeout-Seconds';
+        this.warnSecondsRemain = 60;
+        this.expSecondsRemain = this.warnSecondsRemain;
         service101 = 'http://localhost:8080/JEE-101/api/v1.0/';
         service102 = 'http://localhost:8080/JEE-102/api/v1.0/';
         service103 = 'http://localhost:8080/JEE-103/api/v1.0/';
-      }
+      } //
+      // JEE-103 JWT Authentication services
+      // Note: Tried to move this to a JwtService, but that caused a circular dependency that broke initialization
+      //      ApiService called JwtService to get header
+      //      JwtService called ApiService to refresh jwt when called by the js prompt
+      //
+
 
       _createClass(ApiService, [{
+        key: "setCurrentUser",
+        value: function setCurrentUser(user) {
+          this.user = user;
+        }
+      }, {
+        key: "getCurrentUser",
+        value: function getCurrentUser() {
+          return this.user;
+        }
+      }, {
+        key: "isLoggedIn",
+        value: function isLoggedIn() {
+          if (this.jwtAccess) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }, {
+        key: "getAuthzHeaders",
+        value: function getAuthzHeaders() {
+          return new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]() // .set('Content-Type', 'POST')  // This was necessary for OPTIONS request with HttpClient for CORS to avoid 403
+          .set('Authorization', 'Bearer ' + this.getJwtAccess()).set('Content-Type', 'application/json');
+        }
+      }, {
+        key: "handleError",
+        value: function handleError(error) {
+          console.log('Got API error status: ' + error.status); // Do something like this.router.navigate(['/error']);
+        }
+      }, {
         key: "getJwtAccess",
         value: function getJwtAccess() {
           if (!this.jwtAccess) {
@@ -1614,20 +1853,72 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setJwtAccess",
         value: function setJwtAccess(jwt) {
-          // console.log(">>>>>>>>>> ApiService.setJwtAccess with: " + jwt);
+          //console.log('>>>>>>>>>> ApiService.setJwtAccess with: ' + jwt);
           this.jwtAccess = jwt;
           localStorage.setItem(KEY_JWT_ACCESS, jwt);
         }
       }, {
-        key: "getHeaders103",
-        value: function getHeaders103(jwt) {
-          return new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]() // .set('Content-Type', 'POST')  // This was necessary for OPTIONS request with HttpClient for CORS to avoid 403
-          .set('Authorization', 'Bearer ' + jwt).set('Content-Type', 'application/json');
+        key: "getSecondsRemaining",
+        value: function getSecondsRemaining() {
+          return this.expSecondsRemain;
         }
       }, {
-        key: "handleError",
-        value: function handleError(error) {
-          console.log('Got API error status: ' + error.status); // Do something like this.router.navigate(['/error']);
+        key: "updateJwt",
+        value: function updateJwt(headers) {
+          var _this15 = this;
+
+          var expSeconds = null;
+          var jwtAccess = null;
+
+          if (headers != null) {
+            expSeconds = headers.get(this.TIMEOUT_HEADER);
+            jwtAccess = headers.get(this.JWT_ACCESS_HEADER);
+          }
+
+          this.setJwtAccess(jwtAccess); // console.log("Restarting Timer with expSeconds: " + expSeconds + " and jwtAccess: " + jwtAccess);
+
+          clearInterval(this.interval);
+          this.expSecondsRemain = 0; // Clear time remaining for rest interval
+
+          this.interval = setInterval(function () {
+            if (_this15.expSecondsRemain > 0) {
+              _this15.expSecondsRemain--;
+              if (_this15.expSecondsRemain % 10 === 0) console.log(_this15.getSecondsRemaining() + ' seconds remaining.');
+            } else {
+              _this15.expSecondsRemain = expSeconds;
+            }
+
+            if (_this15.expSecondsRemain === _this15.warnSecondsRemain) {
+              var keepSession = confirm('Session timing out in ' + _this15.warnSecondsRemain + ' seconds.  Keep session alive?');
+
+              if (keepSession === true) {
+                console.log('Extending session...');
+
+                _this15.continueSession();
+              } else {
+                console.log('Not extending session...');
+
+                _this15.terminateSession();
+              }
+            }
+          }, 1000);
+        }
+      }, {
+        key: "continueSession",
+        value: function continueSession() {
+          var _this16 = this;
+
+          this.refreshUser().subscribe(function (success) {
+            _this16.updateJwt(success.headers);
+          }, function (err) {
+            return _this16.handleError(err);
+          });
+        }
+      }, {
+        key: "terminateSession",
+        value: function terminateSession() {
+          this.user = null;
+          this.updateJwt(null);
         } //
         // JEE-101 Services
         //
@@ -1671,41 +1962,110 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             headers: headers102
           });
         } //
+        // Login/Logout/Refresh Services
+        //
+
+      }, {
+        key: "loginUser",
+        value: function loginUser(user) {
+          return this.http.post(service103 + 'auth/login', JSON.stringify(user), {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
+          });
+        }
+      }, {
+        key: "refreshUser",
+        value: function refreshUser() {
+          return this.http.get(service103 + 'auth/refresh', {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
+          });
+        } //
         // JEE-103 Authorized Book Services
+        //         Services now 'observe' which requires pulling the success.body and success.headers
         //
 
       }, {
         key: "readBooks103",
         value: function readBooks103() {
-          return this.http.get(service102 + 'book');
+          return this.http.get(service103 + 'book', {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
+          });
         }
       }, {
         key: "readBook103",
         value: function readBook103(id) {
-          return this.http.get(service102 + 'book/' + id);
+          return this.http.get(service103 + 'book/' + id, {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
+          });
         }
       }, {
         key: "createBook103",
         value: function createBook103(book) {
-          return this.http.post(service102 + 'book', JSON.stringify(book), {
+          return this.http.post(service103 + 'authz/book', JSON.stringify(book), {
             observe: 'response',
-            headers: headers102
+            headers: this.getAuthzHeaders()
           });
         }
       }, {
         key: "updateBook103",
         value: function updateBook103(book) {
-          return this.http.put(service102 + 'book', JSON.stringify(book), {
+          return this.http.put(service103 + 'authz/book', JSON.stringify(book), {
             observe: 'response',
-            headers: headers102
+            headers: this.getAuthzHeaders()
           });
         }
       }, {
         key: "deleteBook103",
         value: function deleteBook103(id) {
-          return this.http["delete"](service102 + 'book/' + id, {
+          return this.http["delete"](service103 + 'authz/book/' + id, {
             observe: 'response',
-            headers: headers102
+            headers: this.getAuthzHeaders()
+          });
+        } //
+        // JEE-103 Authorized User Services
+        //
+
+      }, {
+        key: "readUsers103",
+        value: function readUsers103() {
+          return this.http.get(service103 + 'authz/user', {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
+          });
+        }
+      }, {
+        key: "readUser103",
+        value: function readUser103(id) {
+          return this.http.get(service103 + 'authz/user/' + id, {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
+          });
+        }
+      }, {
+        key: "createUser103",
+        value: function createUser103(user) {
+          return this.http.post(service103 + 'authz/user', JSON.stringify(user), {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
+          });
+        }
+      }, {
+        key: "updateUser103",
+        value: function updateUser103(user) {
+          return this.http.put(service103 + 'authz/user', JSON.stringify(user), {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
+          });
+        }
+      }, {
+        key: "deleteUser103",
+        value: function deleteUser103(id) {
+          return this.http["delete"](service103 + 'authz/user/' + id, {
+            observe: 'response',
+            headers: this.getAuthzHeaders()
           });
         }
       }]);

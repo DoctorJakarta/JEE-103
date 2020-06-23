@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1>\n\tJEE-102: My Books\n\t<button (click)=\"showAdd()\">Add Book</button>\n</h1>\n<div *ngIf=book>\n\t<fieldset style='width: 100%'>\n\t\t<legend>Book Details ({{book.id}}):</legend>\n\t\t<form>\n\t\t\t<label>Title: </label>\n\t\t\t<input name=\"title\" [(ngModel)]=\"book.title\">\n\t\t\t<br />\n\t\t\t<label>Author: </label>\n\t\t\t<input name=\"author\" [(ngModel)]=\"book.author\">\n\t\t\t<br />\n\t\t\t<label>Year: </label>\n\t\t\t<input name=\"year\" [(ngModel)]=\"book.year\">\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertBook()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n\n<div *ngIf=books>\n    <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>Year</th>\n            <th>Author</th>\n            <th>Title</th>\n       </tr>\n\t\t<tr *ngFor='let b of books;'>\n            <td align=center>\n\t\t\t\t<button (click)=\"showEdit(b.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{b.id}}</td>\n            <td>{{b.year}}</td>\n\t\t\t<td>{{b.author}}</td>\n\t\t\t<td>{{b.title}}</td>\n             <td align=center>\n\t\t\t\t<button (click)=\"deleteBook(b.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1>\n\tJEE-102: My Books\n</h1>\n<div *ngIf=book>\n\t<fieldset style='width: 100%'>\n\t\t<legend>Book Details ({{book.id}}):</legend>\n\t\t<form>\n\t\t\t<label>Title: </label>\n\t\t\t<input name=\"title\" [(ngModel)]=\"book.title\">\n\t\t\t<br />\n\t\t\t<label>Author: </label>\n\t\t\t<input name=\"author\" [(ngModel)]=\"book.author\">\n\t\t\t<br />\n\t\t\t<label>Year: </label>\n\t\t\t<input name=\"year\" [(ngModel)]=\"book.year\">\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertBook()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n\n<fieldset *ngIf=books>\n\t<legend>Books: <button (click)=\"showAddBook()\">Add Book</button> </legend>\n    <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>Year</th>\n            <th>Author</th>\n            <th>Title</th>\n       </tr>\n\t\t<tr *ngFor='let b of books;'>\n            <td align=center>\n\t\t\t\t<button (click)=\"showEditBook(b.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{b.id}}</td>\n            <td>{{b.year}}</td>\n\t\t\t<td>{{b.author}}</td>\n\t\t\t<td>{{b.title}}</td>\n             <td align=center>\n\t\t\t\t<button (click)=\"deleteBook(b.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</fieldset>\n");
 
 /***/ }),
 
@@ -71,20 +71,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1>\n\tJEE-103: My Books\n\t<button (click)=\"showAdd()\">Add Book</button>\n</h1>\n<div *ngIf=book>\n\t<fieldset style='width: 100%'>\n\t\t<legend>Book Details ({{book.id}}):</legend>\n\t\t<form>\n\t\t\t<label>Title: </label>\n\t\t\t<input name=\"title\" [(ngModel)]=\"book.title\">\n\t\t\t<br />\n\t\t\t<label>Author: </label>\n\t\t\t<input name=\"author\" [(ngModel)]=\"book.author\">\n\t\t\t<br />\n\t\t\t<label>Year: </label>\n\t\t\t<input name=\"year\" [(ngModel)]=\"book.year\">\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertBook()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n\n<div *ngIf=books>\n    <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>Year</th>\n            <th>Author</th>\n            <th>Title</th>\n       </tr>\n\t\t<tr *ngFor='let b of books;'>\n            <td align=center>\n\t\t\t\t<button (click)=\"showEdit(b.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{b.id}}</td>\n            <td>{{b.year}}</td>\n\t\t\t<td>{{b.author}}</td>\n\t\t\t<td>{{b.title}}</td>\n             <td align=center>\n\t\t\t\t<button (click)=\"deleteBook(b.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("{{ currentUser ? 'Welcome ' + currentUser.username : ''}} \n<button routerLink=\"/login/\">{{ isLoggedIn() ? 'Logout' : 'Login' }}</button>\n\n<h1>\n\tJEE-103: My Books \n</h1>\n\n<div *ngIf=book>\n\t<fieldset style='width: 100%'>\n\t\t<legend>Book Details ({{book.id}}):</legend>\n\t\t<form>\n\t\t\t<label>Title: </label>\n\t\t\t<input name=\"title\" [(ngModel)]=\"book.title\">\n\t\t\t<br />\n\t\t\t<label>Author: </label>\n\t\t\t<input name=\"author\" [(ngModel)]=\"book.author\">\n\t\t\t<br />\n\t\t\t<label>Year: </label>\n\t\t\t<input name=\"year\" [(ngModel)]=\"book.year\">\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertBook()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n\n<fieldset>\n\t<legend>Books: <button  *ngIf=\"isLoggedIn()\" (click)=\"showAddBook()\">Add Book</button></legend>\n \t{{ isLoggedIn() ? '' : 'Must Login to Add/Edit Books' }}\n   <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>Year</th>\n            <th>Author</th>\n            <th>Title</th>\n       </tr>\n\t\t<tr *ngFor='let b of books;'>\n            <td align=center>\n\t\t\t\t<button *ngIf=\"isLoggedIn()\" (click)=\"showEditBook(b.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{b.id}}</td>\n            <td>{{b.year}}</td>\n\t\t\t<td>{{b.author}}</td>\n\t\t\t<td>{{b.title}}</td>\n             <td align=center>\n\t\t\t\t<button *ngIf=\"isLoggedIn()\" (click)=\"deleteBook(b.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</fieldset>\n\n\n\n<div *ngIf=user>\n\t<fieldset style='width: 100%'>\n\t\t<legend>User Details ({{user.id}}):</legend>\n\t\t<form>\n\t\t\t<label>UserID: </label>\n\t\t\t<input name=\"username\" [(ngModel)]=\"user.username\">\n\t\t\t<br />\n\t\t\t<label>Password: </label>\n\t\t\t<input name=\"password\" [(ngModel)]=\"user.password\">\n\t\t\t<br />\n\t\t\t<label>Role: </label>\n\t\t\t\t<select name=\"role\" [(ngModel)]=\"user.role\">\n\t\t\t\t\t<option *ngFor=\"let r of getUserRoleKeys()\" [value]='r' selected>{{userRoleNames.get(r)}}</option>\n\t\t\t\t\t<!-- <option [value]='USER_ROLE.PUBLIC' selected>PUBLIC</option> -->\n\t\t\t\t\t<!-- <option [value]='USER_ROLE.ADMIN'>ADMIN</option> -->\n\t\t\t\t</select>\n\t\t\t<br />\n\t\t\t\n\t\t\t<button (click)=\"upsertUser()\">Save</button>\n\n\t\t</form>\n    </fieldset> \n</div>\n\n<fieldset *ngIf=isAdmin>\n\t<legend>Users: \t\n\t<button *ngIf=\"isLoggedIn()\" (click)=\"showAddUser()\">Add User</button></legend>\n\t{{ isLoggedIn() ? '' : 'Must Login to View Users' }}\n    <table cellspacing=20>\n\t\t<tr>\n            <th></th>\n            <th>ID</th>\n            <th>UserId</th>\n            <th>Role</th>\n       </tr>\n\t\t<tr *ngFor='let u of users;'>\n            <td align=center>\n\t\t\t\t<button *ngIf=(loggedIn) (click)=\"showEditUser(u.id)\">Edit</button>\n\t\t\t</td>\n\t\t\t<td align=right>{{u.id}}</td>\n            <td>{{u.username}}</td>\n\t\t\t<td>{{u.role}}</td>\n             <td align=center>\n\t\t\t\t<button *ngIf=(loggedIn) (click)=\"deleteUser(u.id)\">Delete</button>\n\t\t\t</td>\n       </tr>\n\t</table>\n</fieldset>\n\n\n");
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-login/user-login.component.html":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-login/user-login.component.html ***!
-  \*******************************************************************************************************/
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html ***!
+  \*********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>user-login works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\t<fieldset style='width: 100%'>\n\t\t<legend>Login Form</legend>\n\t\t<form>\n\t\t\t<label>UserID: </label>\n\t\t\t<input name=\"username\" type=text [(ngModel)]=\"user.username\">\n\t\t\t<br />\n\t\t\t<label>Password: </label>\n\t\t\t<input name=\"password\" type=password [(ngModel)]=\"user.password\">\n\t\t\t<button (click)=\"login()\">Login</button>\n\n\t\t</form>\n    </fieldset> \n");
 
 /***/ }),
 
@@ -404,11 +404,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/user-login/user-login.component */ "./src/app/components/user-login/user-login.component.ts");
-/* harmony import */ var _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/jee101/jee101.component */ "./src/app/components/jee101/jee101.component.ts");
-/* harmony import */ var _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/jee102/jee102.component */ "./src/app/components/jee102/jee102.component.ts");
-/* harmony import */ var _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/jee103/jee103.component */ "./src/app/components/jee103/jee103.component.ts");
-/* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/api.service */ "./src/app/services/api.service.ts");
+/* harmony import */ var _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/jee101/jee101.component */ "./src/app/components/jee101/jee101.component.ts");
+/* harmony import */ var _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/jee102/jee102.component */ "./src/app/components/jee102/jee102.component.ts");
+/* harmony import */ var _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/jee103/jee103.component */ "./src/app/components/jee103/jee103.component.ts");
+/* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/api.service */ "./src/app/services/api.service.ts");
+/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
 
 
 
@@ -428,10 +428,10 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-            _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_8__["UserLoginComponent"],
-            _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_9__["Jee101Component"],
-            _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_10__["Jee102Component"],
-            _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_11__["Jee103Component"]
+            _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_8__["Jee101Component"],
+            _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_9__["Jee102Component"],
+            _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_10__["Jee103Component"],
+            _components_login_login_component__WEBPACK_IMPORTED_MODULE_12__["LoginComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -439,7 +439,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(_app_routes__WEBPACK_IMPORTED_MODULE_4__["ROUTES"], { useHash: true, preloadingStrategy: _angular_router__WEBPACK_IMPORTED_MODULE_5__["PreloadAllModules"], onSameUrlNavigation: 'reload' }),
             _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"]
         ],
-        providers: [_services_api_service__WEBPACK_IMPORTED_MODULE_12__["ApiService"]],
+        providers: [_services_api_service__WEBPACK_IMPORTED_MODULE_11__["ApiService"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })
 ], AppModule);
@@ -459,7 +459,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ROUTES", function() { return ROUTES; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/user-login/user-login.component */ "./src/app/components/user-login/user-login.component.ts");
+/* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
 /* harmony import */ var _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/jee101/jee101.component */ "./src/app/components/jee101/jee101.component.ts");
 /* harmony import */ var _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/jee102/jee102.component */ "./src/app/components/jee102/jee102.component.ts");
 /* harmony import */ var _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/jee103/jee103.component */ "./src/app/components/jee103/jee103.component.ts");
@@ -469,12 +469,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const ROUTES = [
-    { path: 'login', component: _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_1__["UserLoginComponent"] },
-    { path: '', component: _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_1__["UserLoginComponent"] },
+    { path: 'login', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__["LoginComponent"] },
+    { path: '', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__["LoginComponent"] },
     { path: 'jee101', component: _components_jee101_jee101_component__WEBPACK_IMPORTED_MODULE_2__["Jee101Component"] },
     { path: 'jee102', component: _components_jee102_jee102_component__WEBPACK_IMPORTED_MODULE_3__["Jee102Component"] },
     { path: 'jee103', component: _components_jee103_jee103_component__WEBPACK_IMPORTED_MODULE_4__["Jee103Component"] },
-    { path: '**', component: _components_user_login_user_login_component__WEBPACK_IMPORTED_MODULE_1__["UserLoginComponent"] }
+    { path: '**', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_1__["LoginComponent"] }
 ];
 
 
@@ -511,6 +511,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { CombineLatestOperator } from 'rxjs/internal/observable/combineLatest';
 let Jee101Component = class Jee101Component {
     // tslint:disable-next-line:variable-name
     constructor(_apiService, route, router) {
@@ -588,10 +589,10 @@ let Jee102Component = class Jee102Component {
             console.log('Got Books: ' + this.books);
         }, error => this.apiService.handleError(error));
     }
-    showAdd() {
+    showAddBook() {
         this.book = new src_app_model_book__WEBPACK_IMPORTED_MODULE_3__["Book"]();
     }
-    showEdit(id) {
+    showEditBook(id) {
         console.log('Showing edit bookID: ' + id);
         this.apiService.readBook102(id).subscribe(success => {
             this.book = success;
@@ -660,6 +661,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/api.service */ "./src/app/services/api.service.ts");
 /* harmony import */ var src_app_model_book__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/model/book */ "./src/app/model/book.ts");
+/* harmony import */ var src_app_model_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/model/user */ "./src/app/model/user.ts");
+
 
 
 
@@ -667,40 +670,91 @@ __webpack_require__.r(__webpack_exports__);
 let Jee103Component = class Jee103Component {
     constructor(apiService) {
         this.apiService = apiService;
+        this.USER_ROLE = src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["USER_ROLE"];
+        this.userRoleNames = src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["User"].getUserRoleNames();
+        this.loggedIn = false;
+        this.isAdmin = true;
+        this.showLogin = false;
         this.books = this.getBooks();
+        this.users = this.getUsers();
+        this.currentUser = apiService.getCurrentUser();
+    }
+    isLoggedIn() {
+        return (this.apiService.getCurrentUser() != null);
+    }
+    getUserRoleKeys() {
+        return Array.from(this.userRoleNames.keys());
     }
     getBooks() {
-        this.apiService.readBooks102().subscribe(success => {
-            this.books = success;
-            console.log('Got Books: ' + this.books);
+        this.apiService.readBooks103().subscribe(success => {
+            this.books = success.body;
+            this.apiService.updateJwt(success.headers);
         }, error => this.apiService.handleError(error));
     }
-    showAdd() {
+    getUsers() {
+        this.apiService.readUsers103().subscribe(success => {
+            this.users = success.body;
+            this.apiService.updateJwt(success.headers);
+        }, error => this.apiService.handleError(error));
+    }
+    showAddBook() {
         this.book = new src_app_model_book__WEBPACK_IMPORTED_MODULE_3__["Book"]();
     }
-    showEdit(id) {
+    showEditBook(id) {
         console.log('Showing edit bookID: ' + id);
-        this.apiService.readBook102(id).subscribe(success => {
-            this.book = success;
+        this.apiService.readBook103(id).subscribe(success => {
+            this.book = success.body;
+            this.apiService.updateJwt(success.headers);
+        }, error => this.apiService.handleError(error));
+    }
+    showAddUser() {
+        this.user = new src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
+        this.user.role = src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["USER_ROLE"].PUBLIC; // Set default option
+    }
+    showEditUser(id) {
+        console.log('Showing edit bookID: ' + id);
+        this.apiService.readUser103(id).subscribe(success => {
+            this.user = success.body;
+            this.apiService.updateJwt(success.headers);
         }, error => this.apiService.handleError(error));
     }
     upsertBook() {
-        let apiServieRequest;
+        let apiServiceRequest;
         if (this.book.id) {
-            apiServieRequest = this.apiService.updateBook102(this.book);
+            apiServiceRequest = this.apiService.updateBook103(this.book);
         }
         else {
-            apiServieRequest = this.apiService.createBook102(this.book);
+            apiServiceRequest = this.apiService.createBook103(this.book);
         }
-        apiServieRequest.subscribe(success => {
+        apiServiceRequest.subscribe(success => {
             this.getBooks();
             this.book = null;
         }, error => this.apiService.handleError(error));
     }
     deleteBook(id) {
         if (confirm('Are you sure you want to delete the book?')) {
-            this.apiService.deleteBook102(id).subscribe(success => {
+            this.apiService.deleteBook103(id).subscribe(success => {
                 this.getBooks();
+            }, error => this.apiService.handleError(error));
+        }
+    }
+    upsertUser() {
+        let apiServiceRequest;
+        if (this.user.id) {
+            apiServiceRequest = this.apiService.updateUser103(this.user);
+        }
+        else {
+            apiServiceRequest = this.apiService.createUser103(this.user);
+        }
+        apiServiceRequest.subscribe(success => {
+            this.getUsers();
+            this.user = null;
+        }, error => this.apiService.handleError(error));
+    }
+    deleteUser(id) {
+        if (confirm('Are you sure you want to delete the user?')) {
+            this.apiService.deleteUser103(id).subscribe(success => {
+                this.getUsers();
             }, error => this.apiService.handleError(error));
         }
     }
@@ -720,45 +774,66 @@ Jee103Component = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/components/user-login/user-login.component.css":
-/*!****************************************************************!*\
-  !*** ./src/app/components/user-login/user-login.component.css ***!
-  \****************************************************************/
+/***/ "./src/app/components/login/login.component.css":
+/*!******************************************************!*\
+  !*** ./src/app/components/login/login.component.css ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdXNlci1sb2dpbi91c2VyLWxvZ2luLmNvbXBvbmVudC5jc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
-/***/ "./src/app/components/user-login/user-login.component.ts":
-/*!***************************************************************!*\
-  !*** ./src/app/components/user-login/user-login.component.ts ***!
-  \***************************************************************/
-/*! exports provided: UserLoginComponent */
+/***/ "./src/app/components/login/login.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/components/login/login.component.ts ***!
+  \*****************************************************/
+/*! exports provided: LoginComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserLoginComponent", function() { return UserLoginComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/api.service */ "./src/app/services/api.service.ts");
+/* harmony import */ var src_app_model_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/model/user */ "./src/app/model/user.ts");
 
 
-let UserLoginComponent = class UserLoginComponent {
-    constructor() { }
-    ngOnInit() {
+
+
+
+let LoginComponent = class LoginComponent {
+    constructor(apiService, router) {
+        this.apiService = apiService;
+        this.router = router;
+        this.apiService.terminateSession(); // The /login/ route automatically logs out the current User
+        this.user = new src_app_model_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
+    }
+    login() {
+        this.apiService.loginUser(this.user).subscribe(success => {
+            // this.user = success.body;
+            this.apiService.setCurrentUser(success.body);
+            this.apiService.updateJwt(success.headers);
+            this.router.navigate(['/jee103/']);
+        }, error => this.apiService.handleError(error));
     }
 };
-UserLoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+LoginComponent.ctorParameters = () => [
+    { type: _services_api_service__WEBPACK_IMPORTED_MODULE_3__["ApiService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
+LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-user-login',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./user-login.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-login/user-login.component.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./user-login.component.css */ "./src/app/components/user-login/user-login.component.css")).default]
+        selector: 'app-login',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/login/login.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./login.component.css */ "./src/app/components/login/login.component.css")).default]
     })
-], UserLoginComponent);
+], LoginComponent);
 
 
 
@@ -777,6 +852,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class Book {
+}
+
+
+/***/ }),
+
+/***/ "./src/app/model/user.ts":
+/*!*******************************!*\
+  !*** ./src/app/model/user.ts ***!
+  \*******************************/
+/*! exports provided: USER_ROLE, User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER_ROLE", function() { return USER_ROLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+var USER_ROLE;
+(function (USER_ROLE) {
+    USER_ROLE["ADMIN"] = "ADMIN";
+    USER_ROLE["PUBLIC"] = "PUBLIC";
+})(USER_ROLE || (USER_ROLE = {}));
+const UserRoleNames = new Map([
+    // These are the option display names
+    [USER_ROLE.ADMIN, 'Admin'],
+    [USER_ROLE.PUBLIC, 'Public']
+]);
+class User {
+    static getUserRoleNames() {
+        return UserRoleNames;
+    }
 }
 
 
@@ -813,9 +920,39 @@ let ApiService = class ApiService {
     constructor(router, http) {
         this.router = router;
         this.http = http;
+        this.JWT_ACCESS_HEADER = 'Jwt-Access';
+        this.TIMEOUT_HEADER = 'Timeout-Seconds';
+        this.warnSecondsRemain = 60;
+        this.expSecondsRemain = this.warnSecondsRemain;
         service101 = 'http://localhost:8080/JEE-101/api/v1.0/';
         service102 = 'http://localhost:8080/JEE-102/api/v1.0/';
         service103 = 'http://localhost:8080/JEE-103/api/v1.0/';
+    }
+    //
+    // JEE-103 JWT Authentication services
+    // Note: Tried to move this to a JwtService, but that caused a circular dependency that broke initialization
+    //      ApiService called JwtService to get header
+    //      JwtService called ApiService to refresh jwt when called by the js prompt
+    //
+    setCurrentUser(user) { this.user = user; }
+    getCurrentUser() { return this.user; }
+    isLoggedIn() {
+        if (this.jwtAccess) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    getAuthzHeaders() {
+        return new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
+            // .set('Content-Type', 'POST')  // This was necessary for OPTIONS request with HttpClient for CORS to avoid 403
+            .set('Authorization', 'Bearer ' + this.getJwtAccess())
+            .set('Content-Type', 'application/json');
+    }
+    handleError(error) {
+        console.log('Got API error status: ' + error.status);
+        // Do something like this.router.navigate(['/error']);
     }
     getJwtAccess() {
         if (!this.jwtAccess) {
@@ -824,19 +961,52 @@ let ApiService = class ApiService {
         return this.jwtAccess;
     }
     setJwtAccess(jwt) {
-        // console.log(">>>>>>>>>> ApiService.setJwtAccess with: " + jwt);
+        //console.log('>>>>>>>>>> ApiService.setJwtAccess with: ' + jwt);
         this.jwtAccess = jwt;
         localStorage.setItem(KEY_JWT_ACCESS, jwt);
     }
-    getHeaders103(jwt) {
-        return new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]()
-            // .set('Content-Type', 'POST')  // This was necessary for OPTIONS request with HttpClient for CORS to avoid 403
-            .set('Authorization', 'Bearer ' + jwt)
-            .set('Content-Type', 'application/json');
+    getSecondsRemaining() { return this.expSecondsRemain; }
+    updateJwt(headers) {
+        let expSeconds = null;
+        let jwtAccess = null;
+        if (headers != null) {
+            expSeconds = headers.get(this.TIMEOUT_HEADER);
+            jwtAccess = headers.get(this.JWT_ACCESS_HEADER);
+        }
+        this.setJwtAccess(jwtAccess);
+        // console.log("Restarting Timer with expSeconds: " + expSeconds + " and jwtAccess: " + jwtAccess);
+        clearInterval(this.interval);
+        this.expSecondsRemain = 0; // Clear time remaining for rest interval
+        this.interval = setInterval(() => {
+            if (this.expSecondsRemain > 0) {
+                this.expSecondsRemain--;
+                if (this.expSecondsRemain % 10 === 0)
+                    console.log(this.getSecondsRemaining() + ' seconds remaining.');
+            }
+            else {
+                this.expSecondsRemain = expSeconds;
+            }
+            if (this.expSecondsRemain === this.warnSecondsRemain) {
+                const keepSession = confirm('Session timing out in ' + this.warnSecondsRemain + ' seconds.  Keep session alive?');
+                if (keepSession === true) {
+                    console.log('Extending session...');
+                    this.continueSession();
+                }
+                else {
+                    console.log('Not extending session...');
+                    this.terminateSession();
+                }
+            }
+        }, 1000);
     }
-    handleError(error) {
-        console.log('Got API error status: ' + error.status);
-        // Do something like this.router.navigate(['/error']);
+    continueSession() {
+        this.refreshUser().subscribe(success => {
+            this.updateJwt(success.headers);
+        }, err => this.handleError(err));
+    }
+    terminateSession() {
+        this.user = null;
+        this.updateJwt(null);
     }
     //
     // JEE-101 Services
@@ -863,22 +1033,50 @@ let ApiService = class ApiService {
         return this.http.delete(service102 + 'book/' + id, { headers: headers102 });
     }
     //
+    // Login/Logout/Refresh Services
+    //
+    loginUser(user) {
+        return this.http.post(service103 + 'auth/login', JSON.stringify(user), { observe: 'response', headers: this.getAuthzHeaders() });
+    }
+    refreshUser() {
+        return this.http.get(service103 + 'auth/refresh', { observe: 'response', headers: this.getAuthzHeaders() });
+    }
+    //
     // JEE-103 Authorized Book Services
+    //         Services now 'observe' which requires pulling the success.body and success.headers
     //
     readBooks103() {
-        return this.http.get(service102 + 'book');
+        return this.http.get(service103 + 'book', { observe: 'response', headers: this.getAuthzHeaders() });
     }
     readBook103(id) {
-        return this.http.get(service102 + 'book/' + id);
+        return this.http.get(service103 + 'book/' + id, { observe: 'response', headers: this.getAuthzHeaders() });
     }
     createBook103(book) {
-        return this.http.post(service102 + 'book', JSON.stringify(book), { observe: 'response', headers: headers102 });
+        return this.http.post(service103 + 'authz/book', JSON.stringify(book), { observe: 'response', headers: this.getAuthzHeaders() });
     }
     updateBook103(book) {
-        return this.http.put(service102 + 'book', JSON.stringify(book), { observe: 'response', headers: headers102 });
+        return this.http.put(service103 + 'authz/book', JSON.stringify(book), { observe: 'response', headers: this.getAuthzHeaders() });
     }
     deleteBook103(id) {
-        return this.http.delete(service102 + 'book/' + id, { observe: 'response', headers: headers102 });
+        return this.http.delete(service103 + 'authz/book/' + id, { observe: 'response', headers: this.getAuthzHeaders() });
+    }
+    //
+    // JEE-103 Authorized User Services
+    //
+    readUsers103() {
+        return this.http.get(service103 + 'authz/user', { observe: 'response', headers: this.getAuthzHeaders() });
+    }
+    readUser103(id) {
+        return this.http.get(service103 + 'authz/user/' + id, { observe: 'response', headers: this.getAuthzHeaders() });
+    }
+    createUser103(user) {
+        return this.http.post(service103 + 'authz/user', JSON.stringify(user), { observe: 'response', headers: this.getAuthzHeaders() });
+    }
+    updateUser103(user) {
+        return this.http.put(service103 + 'authz/user', JSON.stringify(user), { observe: 'response', headers: this.getAuthzHeaders() });
+    }
+    deleteUser103(id) {
+        return this.http.delete(service103 + 'authz/user/' + id, { observe: 'response', headers: this.getAuthzHeaders() });
     }
 };
 ApiService.ctorParameters = () => [
