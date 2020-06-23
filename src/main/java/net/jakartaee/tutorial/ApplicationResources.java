@@ -13,7 +13,7 @@ import net.jakartaee.tutorial.data.SQLiteDatabase;
 import net.jakartaee.tutorial.exceptions.DatabaseException;
 import net.jakartaee.tutorial.exceptions.DatabaseExistsException;
 
-@ApplicationPath("api")
+@ApplicationPath("/api/v1.0/")
 public class ApplicationResources extends ResourceConfig {
 
     public static final String JWT_HANDLER_ATTR = "JwtHandler";

@@ -12,6 +12,7 @@ import net.jakartaee.tutorial.exceptions.DatabaseException;
 import net.jakartaee.tutorial.exceptions.NotDeletedException;
 import net.jakartaee.tutorial.exceptions.NotFoundException;
 import net.jakartaee.tutorial.model.User;
+import net.jakartaee.tutorial.model.UserDB;
 
 
 
@@ -21,19 +22,19 @@ public class UserDAO extends SQLiteDAO{
 	private static final String SQL_GET_USER_BY_ID = "SELECT * FROM user WHERE userId=?";
 	private static final String SQL_GET_USER_BY_USERNAME = "SELECT * FROM user WHERE username=?";
 
-	private static final String SQL_INSERT_USER = "INSERT INTO user"  + User.SQL_INSERT_FIELDS + User.SQL_INSERT_VALUES;
-	private static final String SQL_UPDATE_USER = "UPDATE user SET "  + User.SQL_UPDATE_FIELDS + " WHERE userId=?";
+	private static final String SQL_INSERT_USER = "INSERT INTO user"  + UserDB.SQL_INSERT_FIELDS + UserDB.SQL_INSERT_VALUES;
+	private static final String SQL_UPDATE_USER = "UPDATE user SET "  + UserDB.SQL_UPDATE_FIELDS + " WHERE userId=?";
 	private static final String SQL_DELETE_USER = "DELETE FROM user WHERE userId=?";
 	
-	public List<User> getUsers() throws DatabaseException{
-		List<User> users = new ArrayList<>();
+	public List<UserDB> getUsers() throws DatabaseException{
+		List<UserDB> users = new ArrayList<>();
 		try(
 				Connection conn = SQLiteDatabase.getConnection();
 				PreparedStatement getPS = conn.prepareStatement(SQL_GET_ALL_USERS);){
 		
 			ResultSet rs = getPS.executeQuery();
 			while (rs.next()) {
-				users.add(new User(rs));
+				users.add(new UserDB(rs));
 			}
 		} catch (SQLException e) {
 			throw new DatabaseException("getUsers was not successful.",e);
@@ -62,8 +63,8 @@ public class UserDAO extends SQLiteDAO{
 		return user;
 	}
 	
-	public User getUserByUsername(String username) throws NotFoundException, DatabaseException{
-		User user = null;
+	public UserDB getUserByUsername(String username) throws NotFoundException, DatabaseException{
+		UserDB user = null;
 		try(
 				Connection conn = SQLiteDatabase.getConnection();
 				PreparedStatement getPS = conn.prepareStatement(SQL_GET_USER_BY_USERNAME);){
@@ -74,16 +75,15 @@ public class UserDAO extends SQLiteDAO{
 				throw new NotFoundException("User not found for username: " + username);
 			}
 			else {
-				user = new User(rs);		
+				user = new UserDB(rs);		
 			}
 		} catch (SQLException e) {
 			throw new DatabaseException("getTagById was not successful.",e);
 		}
-		System.out.println("Got dbUser with password: "+user.getPassword());
 		return user;
 	}
 	
-	public void insertUser(User u) throws DatabaseException{
+	public void insertUser(UserDB u) throws DatabaseException{
 		try(
 				Connection conn = SQLiteDatabase.getConnection();
 				PreparedStatement insertPS = conn.prepareStatement(SQL_INSERT_USER);){
@@ -103,7 +103,7 @@ public class UserDAO extends SQLiteDAO{
 		}
 	}
 	
-	public void updateUser(User u) throws DatabaseException{
+	public void updateUser(UserDB u) throws DatabaseException{
 		try(
 				Connection conn = SQLiteDatabase.getConnection();
 				PreparedStatement insertPS = conn.prepareStatement(SQL_UPDATE_USER);){

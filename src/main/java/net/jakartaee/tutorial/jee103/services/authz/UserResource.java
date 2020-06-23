@@ -13,10 +13,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import net.jakartaee.tutorial.auth.PasswordHandler;
 import net.jakartaee.tutorial.data.UserDAO;
 import net.jakartaee.tutorial.exceptions.DatabaseException;
 import net.jakartaee.tutorial.exceptions.NotFoundException;
 import net.jakartaee.tutorial.model.User;
+import net.jakartaee.tutorial.model.UserDB;
 
 
 
@@ -27,7 +29,7 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUsers() {
  		try {
-			List<User> users = new UserDAO().getUsers();
+			List<UserDB> users = new UserDAO().getUsers();
 	        return Response.ok(users, MediaType.APPLICATION_JSON).build();
 		} catch (DatabaseException e) {
 			e.printStackTrace();
@@ -53,10 +55,13 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addUser(User user) {
+    public Response addUser(UserDB user) {
     	try {
-			new UserDAO().insertUser(user);;
-			return Response.ok(null, MediaType.APPLICATION_JSON).build();
+     		PasswordHandler pwh = new PasswordHandler();
+    		UserDB saveUser = new UserDB(user.getUsername(), pwh.getSalt(), pwh.getPasswordHash(user.getPassword()), user.getRole());
+			new UserDAO().insertUser(saveUser);
+			User returnUser = new User(saveUser);
+			return Response.ok(returnUser, MediaType.APPLICATION_JSON).build();			// Return minimal User, not UserDB that includes salt/hash
 		} catch (DatabaseException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.BAD_REQUEST).type(MediaType.APPLICATION_JSON).entity(e.getErrorResponse()).build();
@@ -66,7 +71,7 @@ public class UserResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateUser(User user) {
+    public Response updateUser(UserDB user) {
     	try {
 			new UserDAO().updateUser(user);
 			return Response.ok(user, MediaType.APPLICATION_JSON).build();

@@ -4,16 +4,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.security.SecureRandom;
 import java.util.Date;
-import java.util.Set;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
@@ -24,20 +23,24 @@ import net.jakartaee.tutorial.model.User.ROLE;
 public class JwtHandler {
     private final static String SHARED_KEY_FILE = "/opt/apps/keys/jwtKey-deleteToChange.h256";
     
+    //
+    // Headers NOT VISIBLE in Angular unless they are included in web.xml CorsFilter cors.exposed.headers
+    //
     public static final String JWT_ACCESS_HEADER = "Jwt-Access";
     public static final String TIMEOUT_HEADER = "Timeout-Seconds";
 	
 
-	public static final int JWT_ACCESS_TIMEOUT_MIN = 20;		// Minutes to expire after inactivity
+	public static final int JWT_ABSOLUTE_TIMEOUT_HOURS = 8;			// Hours to expire after initial login
+	public static final int JWT_ACCESS_TIMEOUT_MIN = 20;			// Minutes to expire after inactivity
 
 	public static final String AUTHZ_HEADER = "Authorization";
 	public static final int jstStart = "Bearer ".length();
 	public static final String BEARER = "Bearer";
     
-    public final static String EMAIL = "email";
-    public final static String UID = "uid";
-    public final static String ROLE = "role";
-    public final static String EXP_ABSOLUTE = "expAbsolute";		// This is set at Login with the Absolute Timeout.  See: https://www.owasp.org/index.php/Session_Management_Cheat_Sheet
+    public static final String EMAIL = "email";
+    public static final String USERNAME = "username";
+    public static final String ROLE = "role";
+    public static final String EXP_ABSOLUTE = "expAbsolute";		// This is set at Login with the Absolute Timeout.  See: https://www.owasp.org/index.php/Session_Management_Cheat_Sheet
 	
 	private byte[] _key;
 	
@@ -49,8 +52,8 @@ public class JwtHandler {
 		_key = initializeJwtKey();
 	}
 	
-    public String getInitialAccessToken(int minutesAbsolute, String uid, ROLE role) {  
-		 int expireTimeMillis = minutesAbsolute * 60 * 1000;		// Timeout in X minutes
+    public String getInitialAccessToken( String uid, ROLE role) {  
+		 int expireTimeMillis = JWT_ABSOLUTE_TIMEOUT_HOURS * 60 * 1000;		// Timeout in X minutes
 		 Date expAbsolute = new Date(System.currentTimeMillis() + expireTimeMillis);
 		 
 		 System.out.println("Setting Absolute Timeout ("+expAbsolute.getTime()+") : " + expAbsolute);
@@ -63,7 +66,7 @@ public class JwtHandler {
 		Date exp = new Date(System.currentTimeMillis() + expireTimeMillis);
 
 		try {
-			String jwt = JWT.create().withIssuer("auth0").withClaim(UID, uid).withClaim(ROLE, role)
+			String jwt = JWT.create().withIssuer("auth0").withClaim(USERNAME, uid).withClaim(ROLE, role)
 					.withClaim(EXP_ABSOLUTE, expiresAbsolute).withExpiresAt(exp).sign(Algorithm.HMAC256(_key));
 			System.out.println("Created JWT with claims: " + JWT.decode(jwt).getClaims());
 			return jwt;
@@ -74,7 +77,7 @@ public class JwtHandler {
 	
 
 	public String getUpdatedAccessToken(int minutes, String jwtAccess) throws AuthzException {
-		String userId = getClaimString(jwtAccess, UID);
+		String userId = getClaimString(jwtAccess, USERNAME);
 		String role = getClaimString(jwtAccess, ROLE);
 		Long expiresAbsolute = getClaimLong(jwtAccess, EXP_ABSOLUTE);
 		return createToken(minutes, userId, role, expiresAbsolute);
@@ -93,6 +96,10 @@ public class JwtHandler {
 		try { JWTVerifier verifier = JWT.require(Algorithm.HMAC256(_key)) .withIssuer("auth0") .build();	
 			DecodedJWT jwt = verifier.verify(token); //return
 			jwt.getClaim(claimName).asString(); return jwt.getClaim(claimName); 
+		} 
+		catch (JWTDecodeException e) 				// This is a runtime exception that will be caught if the client sends in a Authorization Bearer that isn't a JWT
+		{ 
+			throw new AuthzException("Error verifying JWT", e); 
 		} 
 		catch (IllegalArgumentException e) 
 		{ 

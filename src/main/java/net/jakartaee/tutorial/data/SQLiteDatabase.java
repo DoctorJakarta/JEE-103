@@ -11,7 +11,7 @@ import net.jakartaee.tutorial.auth.PasswordHandler;
 import net.jakartaee.tutorial.exceptions.DatabaseException;
 import net.jakartaee.tutorial.exceptions.DatabaseExistsException;
 import net.jakartaee.tutorial.model.Book;
-import net.jakartaee.tutorial.model.User;
+import net.jakartaee.tutorial.model.UserDB;
 import net.jakartaee.tutorial.model.User.ROLE;
 
 public final class SQLiteDatabase {
@@ -45,7 +45,7 @@ public final class SQLiteDatabase {
 				Connection conn = getConnection();
 				Statement statement = conn.createStatement();		) {   
 			statement.execute(Book.SQL_CREATE_BOOK_TABLE);
-			statement.execute(User.SQL_CREATE_USER_TABLE);
+			statement.execute(UserDB.SQL_CREATE_USER_TABLE);
 			System.out.println("Creating database: "+ DB_PATH);
 			addSampleData();
 		} catch (SQLException e1) {
@@ -59,7 +59,7 @@ public final class SQLiteDatabase {
 		new BookDAO().insertBook(book);
 		
  		PasswordHandler pwh = new PasswordHandler();
-		User user = new User("Admin", pwh.getSalt(), pwh.getPasswordHash("Welcome1"), ROLE.ADMIN);
+		UserDB user = new UserDB("Admin", pwh.getSalt(), pwh.getPasswordHash("Welcome1"), ROLE.ADMIN);
 		new UserDAO().insertUser(user);
 	}
 }
