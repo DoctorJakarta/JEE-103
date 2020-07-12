@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDB extends User{
-	public static final String SQL_CREATE_USER_TABLE = "CREATE TABLE user ( userId INTEGER PRIMARY KEY NOT NULL, username TEXT UNIQUE, pwdsalt TEXT NOT NULL, pwdhash TEXT NOT NULL, role INTEGER)";
+	public static final String SQL_CREATE_USER_TABLE = "CREATE TABLE user ( userId INTEGER PRIMARY KEY NOT NULL, username TEXT UNIQUE, pwdsalt TEXT NOT NULL, pwdhash TEXT NOT NULL, role TEXT)";
 
 	public static final String SQL_INSERT_FIELDS = " (username, pwdsalt, pwdhash, role) ";
 	public static final String SQL_INSERT_VALUES = " VALUES (?,?,?,?) ";

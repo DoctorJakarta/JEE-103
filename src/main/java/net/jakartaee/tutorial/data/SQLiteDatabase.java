@@ -55,11 +55,19 @@ public final class SQLiteDatabase {
 	}
 	
 	private static void addSampleData() throws DatabaseException {
+		//
+		// Add the first book to the library -> "Nineteen Eighty-Four" 
+		//
 		Book book = new Book("Nineteen Eighty-Four", "George Orwell", 1948);
 		new BookDAO().insertBook(book);
 		
- 		PasswordHandler pwh = new PasswordHandler();
-		UserDB user = new UserDB("Admin", pwh.getSalt(), pwh.getPasswordHash("Welcome1"), ROLE.ADMIN);
+		//
+		// Create admin user with the #1 most commonly used enterprise password -> "Password1"
+		//				https://www.zdnet.com/article/top-25-passwords-overused-within-enterprises-password1-welcome-welcome1/
+		//
+
+		PasswordHandler pwh = new PasswordHandler();
+		UserDB user = new UserDB("admin", pwh.getSalt(), pwh.getPasswordHash("Password1"), ROLE.ADMIN);
 		new UserDAO().insertUser(user);
 	}
 }

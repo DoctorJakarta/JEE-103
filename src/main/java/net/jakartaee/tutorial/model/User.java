@@ -50,7 +50,8 @@ public class User {
 		_id = id;
 	}
 	public String getUsername() {
-		return _username;
+		//return _username;
+		return _username.toLowerCase();					// Force username to lowercase for persisting in the database (unique)
 	}
 	public void setUsername(String username) {
 		_username = username;

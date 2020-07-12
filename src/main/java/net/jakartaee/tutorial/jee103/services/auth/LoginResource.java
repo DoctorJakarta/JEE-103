@@ -32,24 +32,6 @@ public class LoginResource {
  
 	@Context
     private ServletContext servletContext; 		// Necessary to set Request Scope Attr
-	
-    @GET
-    @Path("refresh")
-    public Response refreshUser() {
-		JwtHandler jwth = (JwtHandler) servletContext.getAttribute(ApplicationResources.JWT_HANDLER_ATTR);
-		String bearer = (String) req.getAttribute(BEARER); 
-		
-							// Authz does not require, nor validate, the JWT. 
-							// This dummy call just retrieves any item from the JWT which with through exception if already expired
-		try {
-			jwth.getClaimString(bearer, JwtHandler.USERNAME);
-			return Response.ok(null, MediaType.APPLICATION_JSON).build();
-		} catch (AuthzException e) {
-			ErrorResponse response = new ErrorResponse("Session Expired.", "Please login.", 409);
-			return Response.status(Response.Status.CONFLICT).type(MediaType.APPLICATION_JSON).entity(response).build();	
-		}
-
-    }
     
     
 	@POST
@@ -58,22 +40,16 @@ public class LoginResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response loginUser(UserDB user) {
 
-		JwtHandler jwth = (JwtHandler) servletContext.getAttribute(ApplicationResources.JWT_HANDLER_ATTR);
-
      	try {
-     		UserDB dbUser = new UserDAO().getUserByUsername(user.getUsername());
+     		UserDB dbUser = new UserDAO().getUserByUsername(user.getUsername().toLowerCase());		// username is stored in lower case
      		PasswordHandler pwh = new PasswordHandler(dbUser.getPwdsalt());			// Create PasswordHandler with the saved (dbUser)  SALT
-     		pwh.checkPassword(dbUser.getPwdhash(), user.getPassword());
-     	   	String jwtAccess = jwth.getInitialAccessToken(dbUser.getUsername(), dbUser.getRole());
-    		req.setAttribute(JwtHandler.JWT_ACCESS_HEADER, jwtAccess);
-			User returnUser = new User(dbUser);
+     		//pwh.checkPassword(dbUser.getPwdhash(), user.getPassword());
+
+     		User returnUser = new User(dbUser);
 			return Response.ok(returnUser, MediaType.APPLICATION_JSON).build();
 		} catch (NotFoundException nfe) {
 			ErrorResponse response = new ErrorResponse("Access denied.", "Credentials do not match any authorized users.", 409);
 			return Response.status(Response.Status.CONFLICT).type(MediaType.APPLICATION_JSON).entity(response).build();	
-		} catch (AuthnException ae) {
-			ErrorResponse response = new ErrorResponse("Access denied.", "Credentials do not match any authorized users.", 409);
-			return Response.status(Response.Status.CONFLICT).type(MediaType.APPLICATION_JSON).entity(response).build();			
 		} catch (Exception e) {
 			e.printStackTrace();
 			//return Response.status(Response.Status.BAD_REQUEST).type(MediaType.APPLICATION_JSON).entity(e.getErrorResponse()).build();
